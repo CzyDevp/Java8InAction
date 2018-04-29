@@ -32,10 +32,12 @@ public class ExamQuestion3 {
 			});
      	// Subtask c)
 		final CompletionStage<Boolean> futureStatus = addCredits(courses).thenApply(fn->{
-			if(fn.intValue()>50){
+		/*	if(fn.intValue()>50){
 			return true;
-				}
-			System.out.println(fn);	return false;
+				}*/
+			return (fn.intValue()>50) ? true : false;  //5 to 1 line code
+			//System.out.println(fn);
+				//return false;
 		});		
 		futureStatus.thenAccept(System.out::println);
 
