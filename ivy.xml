@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<ivy-module version="2.0">
+  <info organisation="org.apache" module="hello-ivy"/>
+  <dependencies>
+   <!-- https://mvnrepository.com/artifact/log4j/log4j -->
+<dependency org="log4j" name="log4j" rev="1.2.17"/>
+<!-- https://mvnrepository.com/artifact/jfree/jfreechart -->
+<dependency org="jfree" name="jfreechart" rev="1.0.13"/>
+ </dependencies>
+</ivy-module>

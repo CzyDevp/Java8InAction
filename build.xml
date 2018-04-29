@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project basedir="." default="resolve" name="HelloWorld" xmlns:ivy="antlib:org.apache.ivy.ant">
+<property name="lib.dir"     value="lib"/>
+<path id="classpath">
+        <fileset dir="lib" includes="**/*.jar"/>
+    </path>
+	<target name="resolve">
+    <ivy:retrieve/>
+    </target>
+    <target name="init">
+        <mkdir dir="build/classes"/>
+        <mkdir dir = "build/jar"/>
+         </target>
+    <target name="clean">
+        <delete dir="build/classes"/>
+        <delete dir = "build/jar"></delete>
+    </target>
+    <target name="compile" depends="init" description="compile the source ">
+		<!-- Compile the java code from ${src.dir} into ${build.dir} -->
+		<javac classpathref="classpath" includeantruntime="false" srcdir="src/Chapter1" destdir="build/classes" />
+		</target>
+	<target name="jar" depends="compile">
+	<jar destfile="build/jar/FilteringApples.jar" basedir="build/classes">
+	 <fileset dir="build/classes" includes="**/*.class" />
+    <zipgroupfileset dir="lib" includes="**/*.jar" />
+	<!-- <zipgroupfileset dir="lib" includes="*.jar" excludes="META-INF/*.SF, META-INF/*.DSA, META-INF/*.RSA" />-->
+	 <manifest>
+	<attribute name="Main-Class" value="Chapter1.FilteringApples"/>
+	</manifest>
+  	</jar>
+	</target>
+	 <target name="run" depends="jar">
+        <java  jar="build/jar/FilteringApples.jar" fork="true"/>
+           </target>
+  </project>

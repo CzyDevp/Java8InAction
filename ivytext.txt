@@ -1,0 +1,13 @@
+<project name="ivy example" default="compile" xmlns:ivy="antlib:org.apache.ivy.ant">
+ <target name="resolve" description="resolve dependencies with ivy">
+  <ivy:resolve />
+  <ivy:cachepath pathid="default.classpath" />
+ </target>
+ <target name="compile" depends="resolve" description="Compile">
+  <mkdir dir="build/classes" />
+  <javac srcdir="src" destdir="build/classes">
+   <classpath refid="default.classpath" />
+  </javac>
+ </target>
+</project>
+<ivy:retrieve sync="true" type="jar,bundle" />
